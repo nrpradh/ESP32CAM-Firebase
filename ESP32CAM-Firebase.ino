@@ -25,12 +25,12 @@
 #define PCLK_GPIO_NUM 22
 
 // Wi-Fi Credentials
-const char* ssid = "katulistiwa65";          // Replace with your Wi-Fi SSID
-const char* password = "gujarat98";  // Replace with your Wi-Fi password
+const char* ssid = "your-ssid";          // Replace with your Wi-Fi SSID
+const char* password = "your-password";  // Replace with your Wi-Fi password
 
 // Firebase Credentials
-const char* firebaseHost = "https://esp32cam-9b78b-default-rtdb.asia-southeast1.firebasedatabase.app/"; // Replace with your Firebase database URL
-const char* firebaseToken = "JST4nrln2gQRgGKsVIDiTaMdJjOmtpc1DU5qjaYu";  // 
+const char* firebaseHost = "your-realtime-database-url"; // Replace with your Firebase database URL (.firebasedatabase.app/)
+const char* firebaseToken = "your-database-secrets";  // Open Project settings -> Service accounts -> Database secrets 
 
 // Firebase objects
 FirebaseData firebaseData;
@@ -89,13 +89,13 @@ void setupCamera() {
     }
 
     sensor_t *s = esp_camera_sensor_get();
-    s->set_vflip(s, 1);            // Enable vertical flip (Main thing)
-    s->set_dcw(s, 1); 
 
-    // Configure sensor settings
-    s->set_exposure_ctrl(s, 1);    // Disable automatic exposure control
-    s->set_gain_ctrl(s, 1);                       // auto gain on
-    s->set_awb_gain(s, 1);                        // Auto White Balance enable (0 or 1)
+    // ESP32CAM calibration
+    s->set_vflip(s, 1);            // Enable vertical flip (remove if not necessary)
+    s->set_dcw(s, 1); 
+    s->set_exposure_ctrl(s, 1);    
+    s->set_gain_ctrl(s, 1);                      
+    s->set_awb_gain(s, 1);                        
     s->set_brightness(s, 2); 
     s->set_contrast(s, -2);
 
